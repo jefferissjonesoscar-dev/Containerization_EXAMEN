@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Rendez-vous{% endblock %}
+{% block body %}
+<div class="hb-main">
+    <div class="hb-page-title">
+        <h2>Rendez-vous</h2>
+        <p>Agenda des réservations</p>
+    </div>
+    <div class="hb-card" style="padding: 0; overflow: hidden; width: 100%;">
+        <div style="width: 100%; overflow-x: auto;">
+        <div style="padding: 1.2rem 1.5rem; display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid var(--creme-dark);">
+            <span style="font-size:0.82rem; letter-spacing:1px; text-transform:uppercase; color:var(--texte-light);">
+                Liste des rendez-vous
+            </span>
+            <a class="hb-btn hb-btn-gold" href="{{ url_for('rendez_vous_ajouter_wtf') }}">+ Nouveau rendez-vous</a>
+        </div>
+        <table class="hb-table" style="table-layout: fixed; width: 100%;">
+            {% if data %}
+            <thead>
+                <tr>
+                    <th style="width:4%;">Id</th>
+                    <th style="width:9%;">Date</th>
+                    <th style="width:7%;">Heure</th>
+                    <th style="width:9%;">Statut</th>
+                    <th style="width:10%;">Client</th>
+                    <th style="width:10%;">Coiffeur</th>
+                    <th style="width:11%;">Prestation</th>
+                    <th style="width:7%;">Retard</th>
+                    <th style="width:10%;">Note</th>
+                    <th style="width:11%; text-align:center;">Modifier</th>
+                    <th style="width:12%; text-align:center;">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.id_rdv }}</td>
+                    <td><strong>{{ row.date_rdv }}</strong></td>
+                    <td>{{ row.heure_rdv }}</td>
+                    <td style="white-space:nowrap;">
+                        {% if row.statut_rdv == 'Confirmé' %}
+                            <span style="background:#d4edda; color:#155724; padding:0.2rem 0.7rem; border-radius:20px; font-size:0.75rem; white-space:nowrap; display:inline-block;">Confirmé</span>
+                        {% elif row.statut_rdv == 'Annulé' %}
+                            <span style="background:#f8d7da; color:#721c24; padding:0.2rem 0.7rem; border-radius:20px; font-size:0.75rem; white-space:nowrap; display:inline-block;">Annulé</span>
+                        {% else %}
+                            <span style="background:#fff3cd; color:#856404; padding:0.2rem 0.7rem; border-radius:20px; font-size:0.75rem; white-space:nowrap; display:inline-block;">{{ row.statut_rdv }}</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ row.nom_client_complet }}</td>
+                    <td>{{ row.nom_coiffeur_complet }}</td>
+                    <td>{{ row.nom_prestation }}</td>
+                    <td>{% if row.retard_rdv %}{{ row.retard_rdv }} min{% else %}—{% endif %}</td>
+                    <td style="color:var(--texte-light); font-size:0.82rem;">{{ row.note_rdv or '—' }}</td>
+                    <td style="text-align:center;">
+                        <a class="hb-btn hb-btn-dark" href="{{ url_for('rendez_vous_update_wtf', id_rdv_btn_edit_html=row.id_rdv) }}">Modifier</a>
+                    </td>
+                    <td style="text-align:center;">
+                        <a class="hb-btn hb-btn-danger" href="{{ url_for('rendez_vous_delete_wtf', id_rdv_btn_delete_html=row.id_rdv) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="11" style="text-align:center; padding:2rem; color:var(--texte-light);">
+                        Aucun rendez-vous enregistré.
+                        <a class="hb-btn hb-btn-gold" href="{{ url_for('rendez_vous_ajouter_wtf') }}" style="margin-left:1rem;">+ Ajouter</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+        </div><!-- fin overflow-x -->
+    </div>
+</div>
+{% endblock %}

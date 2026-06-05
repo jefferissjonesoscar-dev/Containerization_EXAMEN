@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Clients{% endblock %}
+{% block body %}
+<div class="hb-main">
+    <div class="hb-page-title">
+        <h2>Clients</h2>
+        <p>Liste de tous les clients du salon</p>
+    </div>
+    <div class="hb-card" style="padding: 0; overflow: hidden; width: 100%;">
+        <div style="padding: 1.2rem 1.5rem; display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid var(--creme-dark);">
+            <span style="font-size:0.82rem; letter-spacing:1px; text-transform:uppercase; color:var(--texte-light);">
+                Liste des clients
+            </span>
+            <a class="hb-btn hb-btn-gold" href="{{ url_for('clients_ajouter_wtf') }}">+ Nouveau client</a>
+        </div>
+        <div style="overflow-x: auto;">
+        <table class="hb-table" style="min-width: 700px;">
+            {% if data %}
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Téléphone</th>
+                    <th>Email</th>
+                    <th>Date inscription</th>
+                    <th style="text-align:center;" colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.id_client }}</td>
+                    <td><strong>{{ row.nom_client }}</strong></td>
+                    <td>{{ row.prenom_client }}</td>
+                    <td>{{ row.telephone_client }}</td>
+                    <td>{{ row.email_client }}</td>
+                    <td style="color:var(--texte-light); font-size:0.82rem;">{{ row.date_ins_client }}</td>
+                    <td style="text-align:center;">
+                        <a class="hb-btn hb-btn-dark" href="{{ url_for('client_update_wtf', id_client_btn_edit_html=row.id_client) }}">Modifier</a>
+                    </td>
+                    <td style="text-align:center;">
+                        <a class="hb-btn hb-btn-danger" href="{{ url_for('client_delete_wtf', id_client_btn_delete_html=row.id_client) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8" style="text-align:center; padding:2rem; color:var(--texte-light);">
+                        Aucun client enregistré.
+                        <a class="hb-btn hb-btn-gold" href="{{ url_for('clients_ajouter_wtf') }}" style="margin-left:1rem;">+ Ajouter</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

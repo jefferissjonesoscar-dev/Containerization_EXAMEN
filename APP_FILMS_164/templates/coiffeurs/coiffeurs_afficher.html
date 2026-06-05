@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Coiffeurs{% endblock %}
+{% block body %}
+<div class="hb-main">
+    <div class="hb-page-title">
+        <h2>Coiffeurs</h2>
+        <p>Équipe du salon</p>
+    </div>
+    <div class="hb-card" style="padding: 0; overflow: hidden; width: 100%;">
+        <div style="padding: 1.2rem 1.5rem; display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid var(--creme-dark);">
+            <span style="font-size:0.82rem; letter-spacing:1px; text-transform:uppercase; color:var(--texte-light);">
+                Liste des coiffeurs
+            </span>
+            <a class="hb-btn hb-btn-gold" href="{{ url_for('coiffeurs_ajouter_wtf') }}">+ Nouveau coiffeur</a>
+        </div>
+        <div style="overflow-x: auto;">
+        <table class="hb-table" style="min-width: 600px;">
+            {% if data %}
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Spécialité</th>
+                    <th>Date inscription</th>
+                    <th style="text-align:center;" colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.id_coiffeur }}</td>
+                    <td><strong>{{ row.nom_coiffeur }}</strong></td>
+                    <td>{{ row.prenom_coiffeur }}</td>
+                    <td>
+                        <span style="background:#f0e8d5; color:var(--gold-dark); padding:0.2rem 0.6rem; border-radius:20px; font-size:0.78rem; letter-spacing:1px;">
+                            {{ row.specialite_coiffeur }}
+                        </span>
+                    </td>
+                    <td style="color:var(--texte-light); font-size:0.82rem;">{{ row.date_ins_coiffeur }}</td>
+                    <td style="text-align:center;">
+                        <a class="hb-btn hb-btn-dark" href="{{ url_for('coiffeur_update_wtf', id_coiffeur_btn_edit_html=row.id_coiffeur) }}">Modifier</a>
+                    </td>
+                    <td style="text-align:center;">
+                        <a class="hb-btn hb-btn-danger" href="{{ url_for('coiffeur_delete_wtf', id_coiffeur_btn_delete_html=row.id_coiffeur) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7" style="text-align:center; padding:2rem; color:var(--texte-light);">
+                        Aucun coiffeur enregistré.
+                        <a class="hb-btn hb-btn-gold" href="{{ url_for('coiffeurs_ajouter_wtf') }}" style="margin-left:1rem;">+ Ajouter</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

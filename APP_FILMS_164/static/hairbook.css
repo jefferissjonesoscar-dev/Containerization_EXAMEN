@@ -1,0 +1,497 @@
+/* ============================================================
+   hairbook.css — Design élégant luxe pour HairBook
+   GUERID Rayan - DEVA 1A
+   ============================================================ */
+
+/* --- Variables de couleurs --- */
+:root {
+    --gold:        #c9a84c;
+    --gold-light:  #e8c96a;
+    --gold-dark:   #9e7a2a;
+    --noir:        #111111;
+    --noir-soft:   #1e1e1e;
+    --noir-card:   #222222;
+    --creme:       #f8f5f0;
+    --creme-dark:  #ede9e2;
+    --texte:       #2c2c2c;
+    --texte-light: #888888;
+    --blanc:       #ffffff;
+    --danger:      #c0392b;
+    --success:     #27ae60;
+    --warning:     #d4ac0d;
+}
+
+/* --- Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background-color: var(--creme);
+    color: var(--texte);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Pousse le footer en bas quand le contenu est court */
+.hb-main {
+    flex: 1;
+}
+
+/* --- NAVBAR --- */
+.hb-navbar {
+    background-color: var(--noir) !important;
+    border-bottom: 2px solid var(--gold);
+    padding: 0.8rem 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.hb-navbar .navbar-brand {
+    font-family: 'Georgia', serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--gold) !important;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hb-navbar .navbar-brand span {
+    color: var(--blanc);
+    font-weight: 300;
+}
+
+.hb-navbar .nav-link {
+    color: var(--creme) !important;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem !important;
+    transition: color 0.3s ease;
+}
+
+.hb-navbar .nav-link:hover {
+    color: var(--gold) !important;
+}
+
+.hb-navbar .navbar-toggler {
+    border-color: var(--gold);
+}
+
+.hb-navbar .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* --- BANNIÈRE --- */
+.hb-banner {
+    width: 100%;
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hb-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.55);
+}
+
+.hb-banner-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hb-banner-overlay h1 {
+    font-family: 'Georgia', serif;
+    font-size: 4rem;
+    color: var(--blanc);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.hb-banner-overlay h1 span {
+    color: var(--gold);
+}
+
+.hb-banner-overlay p {
+    font-size: 1rem;
+    color: var(--creme);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 0.8rem;
+    opacity: 0.9;
+}
+
+.hb-banner-line {
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+    margin: 1rem auto 0;
+}
+
+/* --- CONTENU PRINCIPAL --- */
+.hb-main {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+/* --- TITRE DE PAGE --- */
+.hb-page-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--gold-dark);
+}
+
+.hb-page-title h2 {
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    color: var(--noir);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hb-page-title h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0.6rem auto 0;
+}
+
+.hb-page-title p {
+    color: var(--texte-light);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+/* --- CARTE --- */
+.hb-card {
+    background: var(--blanc);
+    border: 1px solid var(--creme-dark);
+    border-top: 3px solid var(--gold);
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* --- TABLEAU --- */
+.hb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+
+.hb-table thead {
+    background-color: var(--noir);
+    color: var(--gold);
+}
+
+.hb-table thead th {
+    padding: 0.85rem 0.7rem;
+    font-weight: normal;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    border: none;
+    white-space: nowrap;
+}
+
+.hb-table tbody tr {
+    border-bottom: 1px solid var(--creme-dark);
+    transition: background 0.2s;
+}
+
+.hb-table tbody tr:hover {
+    background-color: #fdf9f2;
+}
+
+.hb-table tbody td {
+    padding: 0.75rem 0.7rem;
+    color: var(--texte);
+    vertical-align: middle;
+    font-size: 0.88rem;
+}
+
+/* --- BOUTONS --- */
+.hb-btn {
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    font-family: 'Georgia', serif;
+    white-space: nowrap;
+}
+
+.hb-btn-gold {
+    background: var(--gold);
+    color: var(--noir);
+}
+.hb-btn-gold:hover {
+    background: var(--gold-dark);
+    color: var(--blanc);
+}
+
+.hb-btn-dark {
+    background: var(--noir);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+}
+.hb-btn-dark:hover {
+    background: var(--gold);
+    color: var(--noir);
+}
+
+.hb-btn-outline {
+    background: transparent;
+    color: var(--texte);
+    border: 1px solid #ccc;
+}
+.hb-btn-outline:hover {
+    background: var(--creme-dark);
+}
+
+.hb-btn-danger {
+    background: var(--danger);
+    color: var(--blanc);
+}
+.hb-btn-danger:hover {
+    background: #a93226;
+    color: var(--blanc);
+}
+
+/* --- FORMULAIRES --- */
+.hb-form label {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--texte-light);
+    margin-bottom: 0.4rem;
+    margin-top: 1.2rem;
+}
+
+.hb-form input[type="text"],
+.hb-form input[type="email"],
+.hb-form input[type="date"],
+.hb-form input[type="time"],
+.hb-form input[type="number"],
+.hb-form select,
+.hb-form textarea {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 1px;
+    background: var(--creme);
+    font-family: 'Georgia', serif;
+    font-size: 0.95rem;
+    color: var(--texte);
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.hb-form input:focus,
+.hb-form select:focus,
+.hb-form textarea:focus {
+    border-color: var(--gold);
+    background: var(--blanc);
+}
+
+.hb-form input[readonly] {
+    background: var(--creme-dark);
+    color: var(--texte-light);
+    cursor: not-allowed;
+}
+
+.hb-form .hb-error {
+    color: var(--danger);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.hb-form-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+/* --- TOASTS --- */
+#hb-toast-container {
+    position: fixed;
+    top: 80px;
+    right: 1.5rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.hb-toast {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--noir);
+    color: var(--creme);
+    padding: 0.9rem 1.2rem;
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    font-size: 0.88rem;
+    letter-spacing: 0.5px;
+    min-width: 260px;
+    max-width: 360px;
+    cursor: pointer;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    animation: toastIn 0.35s ease;
+}
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateX(110%); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.hb-toast-bar {
+    width: 3px;
+    height: 36px;
+    background: var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.hb-toast-close {
+    background: none;
+    border: none;
+    color: var(--texte-light);
+    font-size: 0.75rem;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.hb-toast-close:hover {
+    color: var(--gold);
+}
+
+/* --- ALERTE SUPPRESSION --- */
+.hb-delete-warning {
+    background: #fff8f8;
+    border: 1px solid #f5c6cb;
+    border-left: 4px solid var(--danger);
+    padding: 1.2rem 1.5rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.hb-delete-warning h4 {
+    color: var(--danger);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+/* --- TABLE ASSOCIATIONS (delete) --- */
+.hb-assoc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+}
+.hb-assoc-table th {
+    background: #f0e8d5;
+    color: var(--gold-dark);
+    padding: 0.6rem 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+.hb-assoc-table td {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--creme-dark);
+}
+
+/* --- FOOTER --- */
+.hb-footer {
+    background: var(--noir);
+    color: var(--texte-light);
+    text-align: center;
+    padding: 1.8rem;
+    font-size: 0.88rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-top: 2px solid var(--gold);
+    margin-top: auto;
+}
+
+.hb-footer span {
+    color: var(--gold);
+}
+
+/* --- ICÔNES INITIALES (remplace les emojis) --- */
+.hb-icon {
+    width: 56px;
+    height: 56px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-family: 'Georgia', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    font-style: italic;
+    transition: all 0.3s;
+}
+
+.hb-card:hover .hb-icon {
+    background: var(--gold);
+    color: var(--noir);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hb-banner { height: 250px; }
+    .hb-banner-overlay h1 { font-size: 2.5rem; letter-spacing: 4px; }
+    .hb-main { padding: 1.5rem 0.8rem 3rem; }
+    .hb-table { font-size: 0.78rem; }
+    .hb-table thead th,
+    .hb-table tbody td { padding: 0.5rem 0.5rem; }
+    .hb-card { border-radius: 0; }
+    .hb-btn { padding: 0.3rem 0.6rem; font-size: 0.7rem; }
+    .hb-navbar .navbar-brand { font-size: 1.2rem; }
+    .hb-page-title h2 { font-size: 1.5rem; }
+    .hb-form input, .hb-form select { font-size: 0.9rem; }
+}

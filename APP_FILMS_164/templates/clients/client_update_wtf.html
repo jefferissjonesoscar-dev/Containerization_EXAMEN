@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Modifier un client{% endblock %}
+{% block body %}
+<div class="hb-main">
+    <div class="hb-page-title">
+        <h2>Modifier un Client</h2>
+        <p>Mettre à jour les informations du client</p>
+    </div>
+    <div class="hb-card" style="max-width: 580px; margin: 0 auto;">
+        <form action="" method="POST" novalidate class="hb-form">
+            {{ form_update.hidden_tag() }}
+            {{ form_update.nom_client_update_wtf.label }}
+            {{ form_update.nom_client_update_wtf(class="form-control") }}
+            {% for error in form_update.nom_client_update_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form_update.prenom_client_update_wtf.label }}
+            {{ form_update.prenom_client_update_wtf(class="form-control") }}
+            {% for error in form_update.prenom_client_update_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form_update.telephone_client_update_wtf.label }}
+            {{ form_update.telephone_client_update_wtf(class="form-control") }}
+            {% for error in form_update.telephone_client_update_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form_update.email_client_update_wtf.label }}
+            {{ form_update.email_client_update_wtf(class="form-control") }}
+            {% for error in form_update.email_client_update_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            <div class="hb-form-actions">
+                {{ form_update.submit(class="hb-btn hb-btn-gold") }}
+                <a class="hb-btn hb-btn-outline" href="{{ url_for('clients_afficher', order_by='ASC', id_client_sel=0) }}">Annuler</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

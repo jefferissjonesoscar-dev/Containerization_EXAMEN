@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Ajouter une prestation{% endblock %}
+{% block body %}
+<div class="hb-main">
+    <div class="hb-page-title">
+        <h2>Nouvelle Prestation</h2>
+        <p>Ajouter un service au catalogue</p>
+    </div>
+    <div class="hb-card" style="max-width: 580px; margin: 0 auto;">
+        <form action="" method="POST" novalidate class="hb-form">
+            {{ form.hidden_tag() }}
+            {{ form.nom_prestation_wtf.label }}
+            {{ form.nom_prestation_wtf(class="form-control") }}
+            {% for error in form.nom_prestation_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.duree_prestation_wtf.label }}
+            {{ form.duree_prestation_wtf(class="form-control") }}
+            {% for error in form.duree_prestation_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.prix_prestation_wtf.label }}
+            {{ form.prix_prestation_wtf(class="form-control") }}
+            {% for error in form.prix_prestation_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            <div class="hb-form-actions">
+                {{ form.submit(class="hb-btn hb-btn-gold") }}
+                <a class="hb-btn hb-btn-outline" href="{{ url_for('prestations_afficher', order_by='ASC', id_prestation_sel=0) }}">Annuler</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

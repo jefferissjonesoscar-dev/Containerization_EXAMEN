@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Supprimer un rendez-vous{% endblock %}
+{% block body %}
+<div class="hb-main">
+    <div class="hb-page-title">
+        <h2>Supprimer un Rendez-vous</h2>
+        <p>Confirmer la suppression</p>
+    </div>
+    <div class="hb-card" style="max-width: 620px; margin: 0 auto;">
+        <form action="" method="POST" novalidate class="hb-form">
+            {{ form_delete.hidden_tag() }}
+
+            {{ form_delete.info_rdv_delete_wtf.label }}
+            {{ form_delete.info_rdv_delete_wtf(class="form-control", readonly=true) }}
+
+            <div class="hb-form-actions">
+                {{ form_delete.submit_btn_conf_del(class="hb-btn hb-btn-dark") }}
+                {% if btn_submit_del %}
+                    {{ form_delete.submit_btn_del(class="hb-btn hb-btn-danger") }}
+                {% endif %}
+                {{ form_delete.submit_btn_annuler(class="hb-btn hb-btn-outline") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

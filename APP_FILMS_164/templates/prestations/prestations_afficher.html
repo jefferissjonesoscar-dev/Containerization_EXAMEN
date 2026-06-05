@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Prestations{% endblock %}
+{% block body %}
+<div class="hb-main">
+    <div class="hb-page-title">
+        <h2>Prestations</h2>
+        <p>Services et tarifs du salon</p>
+    </div>
+    <div class="hb-card" style="padding: 0; overflow: hidden; width: 100%;">
+        <div style="padding: 1.2rem 1.5rem; display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid var(--creme-dark);">
+            <span style="font-size:0.82rem; letter-spacing:1px; text-transform:uppercase; color:var(--texte-light);">
+                Liste des prestations
+            </span>
+            <a class="hb-btn hb-btn-gold" href="{{ url_for('prestations_ajouter_wtf') }}">+ Nouvelle prestation</a>
+        </div>
+        <div style="overflow-x: auto;">
+        <table class="hb-table" style="min-width: 550px;">
+            {% if data %}
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Durée (min)</th>
+                    <th>Prix (CHF)</th>
+                    <th>Date inscription</th>
+                    <th style="text-align:center;" colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.id_prestation }}</td>
+                    <td><strong>{{ row.nom_prestation }}</strong></td>
+                    <td>{{ row.duree_prestation }} min</td>
+                    <td>
+                        <span style="color:var(--gold-dark); font-weight:bold;">{{ "%.2f"|format(row.prix_prestation) }} CHF</span>
+                    </td>
+                    <td style="color:var(--texte-light); font-size:0.82rem;">{{ row.date_ins_prestation }}</td>
+                    <td style="text-align:center;">
+                        <a class="hb-btn hb-btn-dark" href="{{ url_for('prestation_update_wtf', id_prestation_btn_edit_html=row.id_prestation) }}">Modifier</a>
+                    </td>
+                    <td style="text-align:center;">
+                        <a class="hb-btn hb-btn-danger" href="{{ url_for('prestation_delete_wtf', id_prestation_btn_delete_html=row.id_prestation) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7" style="text-align:center; padding:2rem; color:var(--texte-light);">
+                        Aucune prestation enregistrée.
+                        <a class="hb-btn hb-btn-gold" href="{{ url_for('prestations_ajouter_wtf') }}" style="margin-left:1rem;">+ Ajouter</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

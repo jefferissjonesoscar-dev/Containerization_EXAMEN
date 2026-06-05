@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Supprimer une prestation{% endblock %}
+{% block body %}
+<div class="hb-main">
+    <div class="hb-page-title">
+        <h2>Supprimer une Prestation</h2>
+        <p>Confirmer la suppression</p>
+    </div>
+    <div class="hb-card" style="max-width: 620px; margin: 0 auto;">
+        <form action="" method="POST" novalidate class="hb-form">
+            {{ form_delete.hidden_tag() }}
+
+            {% if data_rdv_associes %}
+            <div class="hb-delete-warning">
+                <h4>⚠ Cette prestation est liée à des rendez-vous</h4>
+                <table class="hb-assoc-table">
+                    <thead>
+                        <tr><th>Id RDV</th><th>Date RDV</th></tr>
+                    </thead>
+                    <tbody>
+                    {% for row in data_rdv_associes %}
+                        <tr><td>{{ row.id_rdv }}</td><td>{{ row.date_rdv }}</td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div style="background:#f0fff4; border:1px solid #c3e6cb; border-left:4px solid var(--success); padding:1rem 1.2rem; border-radius:2px; margin-bottom:1.5rem;">
+                <p style="margin:0; color:#155724; font-size:0.9rem;">Cette prestation n'est liée à aucun rendez-vous.</p>
+            </div>
+            {% endif %}
+
+            {{ form_delete.nom_prestation_delete_wtf.label }}
+            {{ form_delete.nom_prestation_delete_wtf(class="form-control", readonly=true) }}
+
+            <div class="hb-form-actions">
+                {{ form_delete.submit_btn_conf_del(class="hb-btn hb-btn-dark") }}
+                {% if btn_submit_del %}
+                    {{ form_delete.submit_btn_del(class="hb-btn hb-btn-danger") }}
+                {% endif %}
+                {{ form_delete.submit_btn_annuler(class="hb-btn hb-btn-outline") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

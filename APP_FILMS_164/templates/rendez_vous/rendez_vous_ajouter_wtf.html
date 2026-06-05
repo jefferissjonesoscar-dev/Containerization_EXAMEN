@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Ajouter un rendez-vous{% endblock %}
+{% block body %}
+<div class="hb-main">
+    <div class="hb-page-title">
+        <h2>Nouveau Rendez-vous</h2>
+        <p>Enregistrer une nouvelle réservation</p>
+    </div>
+    <div class="hb-card" style="max-width: 620px; margin: 0 auto;">
+        <form action="" method="POST" novalidate class="hb-form">
+            {{ form.hidden_tag() }}
+
+            {{ form.date_rdv_wtf.label }}
+            {{ form.date_rdv_wtf(class="form-control", placeholder="2024-03-15") }}
+            {% for error in form.date_rdv_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.heure_rdv_wtf.label }}
+            {{ form.heure_rdv_wtf(class="form-control", placeholder="09:30") }}
+            {% for error in form.heure_rdv_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.statut_rdv_wtf.label }}
+            {{ form.statut_rdv_wtf(class="form-control") }}
+            {% for error in form.statut_rdv_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.retard_rdv_wtf.label }}
+            {{ form.retard_rdv_wtf(class="form-control") }}
+            {% for error in form.retard_rdv_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.note_rdv_wtf.label }}
+            {{ form.note_rdv_wtf(class="form-control") }}
+            {% for error in form.note_rdv_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.fk_client_wtf.label }}
+            {{ form.fk_client_wtf(class="form-control") }}
+            {% for error in form.fk_client_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.fk_coiffeur_wtf.label }}
+            {{ form.fk_coiffeur_wtf(class="form-control") }}
+            {% for error in form.fk_coiffeur_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.fk_prestation_wtf.label }}
+            {{ form.fk_prestation_wtf(class="form-control") }}
+            {% for error in form.fk_prestation_wtf.errors %}
+                <div class="hb-error">{{ error }}</div>
+            {% endfor %}
+
+            <div class="hb-form-actions">
+                {{ form.submit(class="hb-btn hb-btn-gold") }}
+                <a class="hb-btn hb-btn-outline" href="{{ url_for('rendez_vous_afficher', order_by='ASC', id_rdv_sel=0) }}">Annuler</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

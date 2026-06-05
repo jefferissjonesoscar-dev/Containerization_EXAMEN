@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}HairBook{% endblock %} — HairBook</title>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="{{ url_for('static', filename='js/jquery.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap-5.0.0-beta2-dist/js/bootstrap.min.js') }}"></script>
+
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css') }}">
+
+    <!-- HairBook CSS custom — GUERID Rayan DEVA 1A -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='hairbook.css') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="hb-navbar navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('mapageprincipale') }}">
+            HAIR<span>BOOK</span>
+        </a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#hbNav"
+                aria-controls="hbNav" aria-expanded="false" aria-label="Menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="hbNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('mapageprincipale') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('clients_afficher', order_by='ASC', id_client_sel=0) }}">Clients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('coiffeurs_afficher', order_by='ASC', id_coiffeur_sel=0) }}">Coiffeurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('prestations_afficher', order_by='ASC', id_prestation_sel=0) }}">Prestations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('rendez_vous_afficher', order_by='ASC', id_rdv_sel=0) }}">Rendez-vous</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Espace fixe pour compenser la navbar fixe -->
+<div style="height: 62px;"></div>
+
+<!-- BANNIÈRE -->
+{% block banner %}{% endblock %}
+
+<!-- TOASTS -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div id="hb-toast-container">
+        {% for category, message in messages %}
+        <div class="hb-toast" onclick="this.style.opacity='0'; setTimeout(()=>this.remove(),300);">
+            <div class="hb-toast-bar"></div>
+            <span>{{ message }}</span>
+            <button class="hb-toast-close">✕</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endwith %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.hb-toast').forEach(function(toast) {
+            setTimeout(function() {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(110%)';
+                setTimeout(function() { toast.remove(); }, 400);
+            }, 3500);
+        });
+    });
+</script>
+
+{% block header %}{% endblock %}
+
+<!-- CONTENU -->
+{% block body %}{% endblock %}
+
+<!-- FOOTER -->
+<footer class="hb-footer">
+    <span>HairBook</span> — Guerid Rayan
+</footer>
+
+{% block javascript %}{% endblock %}
+
+</body>
+</html>
