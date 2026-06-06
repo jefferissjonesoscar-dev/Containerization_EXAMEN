@@ -46,8 +46,8 @@
                             <span style="background:#fff3cd; color:#856404; padding:0.2rem 0.7rem; border-radius:20px; font-size:0.75rem; white-space:nowrap; display:inline-block;">{{ row.statut_rdv }}</span>
                         {% endif %}
                     </td>
-                    <td>{{ row.nom_client_complet }}</td>
-                    <td>{{ row.nom_coiffeur_complet }}</td>
+                    <td>{{ row.nom_client }} {{ row.prenom_client }}</td>
+                    <td>{{ row.nom_coiffeur }} {{ row.prenom_coiffeur }}</td>
                     <td>{{ row.nom_prestation }}</td>
                     <td>{% if row.retard_rdv %}{{ row.retard_rdv }} min{% else %}—{% endif %}</td>
                     <td style="color:var(--texte-light); font-size:0.82rem;">{{ row.note_rdv or '—' }}</td>
