@@ -2,6 +2,7 @@
 Fichier : gestion_rendez_vous_crud.py
 Auteur : OM 2021.03.16 - Adapté GUERID Rayan DEVA 1A
 """
+import datetime
 from pathlib import Path
 
 from flask import redirect
@@ -152,7 +153,11 @@ def rendez_vous_update_wtf():
             print("data_nom_rdv ", data_nom_rdv, " type ", type(data_nom_rdv))
 
             form_update.date_rdv_update_wtf.data      = data_nom_rdv["date_rdv"]
-            form_update.heure_rdv_update_wtf.data     = data_nom_rdv["heure_rdv"]
+            heure_raw = data_nom_rdv["heure_rdv"]
+            if isinstance(heure_raw, datetime.timedelta):
+                total_sec = int(heure_raw.total_seconds())
+                heure_raw = datetime.time(total_sec // 3600, (total_sec % 3600) // 60, total_sec % 60)
+            form_update.heure_rdv_update_wtf.data     = heure_raw
             form_update.statut_rdv_update_wtf.data    = data_nom_rdv["statut_rdv"]
             form_update.retard_rdv_update_wtf.data    = data_nom_rdv["retard_rdv"]
             form_update.note_rdv_update_wtf.data      = data_nom_rdv["note_rdv"]
@@ -212,7 +217,16 @@ def rendez_vous_delete_wtf():
                 data_rdv_delete = mydb_conn.fetchall()
                 print("data_rdv_delete...", data_rdv_delete)
 
-                session['data_rdv_delete'] = data_rdv_delete
+                data_rdv_delete_session = []
+                for row in data_rdv_delete:
+                    row_copy = dict(row)
+                    if isinstance(row_copy.get("heure_rdv"), datetime.timedelta):
+                        total_sec = int(row_copy["heure_rdv"].total_seconds())
+                        row_copy["heure_rdv"] = f"{total_sec // 3600:02}:{(total_sec % 3600) // 60:02}"
+                    if isinstance(row_copy.get("date_rdv"), (datetime.date, datetime.datetime)):
+                        row_copy["date_rdv"] = row_copy["date_rdv"].strftime("%Y-%m-%d")
+                    data_rdv_delete_session.append(row_copy)
+                session['data_rdv_delete'] = data_rdv_delete_session
 
             form_delete.info_rdv_delete_wtf.data = f"RDV #{id_rdv_delete}"
             btn_submit_del = False
