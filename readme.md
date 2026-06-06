@@ -1,7 +1,3 @@
-# Module 164 2026.02.25
+# HairBook — Gestion de rendez-vous pour salon de coiffure
 
-Le "début de la fin"
-
-Le mode d'emploi et vos devoirs se trouvent à l'adresse suivante.
-
-https://info164.github.io/doc164ver1/index.html
+P.S. Ce projet m'a coûté plus d'heures de travail que de coupes de cheveux dans ma vie.
