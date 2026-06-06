@@ -86,7 +86,7 @@ body {
 }
 
 .hb-navbar .navbar-toggler-icon {
-    filter: invert(1);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c9a84c' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* --- BANNIÈRE --- */
@@ -481,17 +481,85 @@ body {
     color: var(--noir);
 }
 
+/* --- GRILLE HOME --- */
+.hb-home-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
 /* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+    .hb-home-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .hb-home-grid .hb-home-img {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
-    .hb-banner { height: 250px; }
-    .hb-banner-overlay h1 { font-size: 2.5rem; letter-spacing: 4px; }
-    .hb-main { padding: 1.5rem 0.8rem 3rem; }
+    /* Bannière */
+    .hb-banner { height: 220px; }
+    .hb-banner-overlay h1 { font-size: 2.2rem; letter-spacing: 4px; }
+    .hb-banner-overlay p { font-size: 0.82rem; letter-spacing: 2px; }
+
+    /* Navbar */
+    .hb-navbar { padding: 0.6rem 1rem; }
+    .hb-navbar .navbar-brand { font-size: 1.2rem; letter-spacing: 2px; }
+
+    /* Contenu */
+    .hb-main { padding: 1.2rem 0.8rem 3rem; }
+
+    /* Titre */
+    .hb-page-title h2 { font-size: 1.4rem; letter-spacing: 2px; }
+
+    /* Carte */
+    .hb-card { padding: 1.2rem; }
+
+    /* Tableau */
     .hb-table { font-size: 0.78rem; }
-    .hb-table thead th,
-    .hb-table tbody td { padding: 0.5rem 0.5rem; }
-    .hb-card { border-radius: 0; }
-    .hb-btn { padding: 0.3rem 0.6rem; font-size: 0.7rem; }
-    .hb-navbar .navbar-brand { font-size: 1.2rem; }
-    .hb-page-title h2 { font-size: 1.5rem; }
-    .hb-form input, .hb-form select { font-size: 0.9rem; }
+    .hb-table thead th { padding: 0.6rem 0.5rem; font-size: 0.68rem; }
+    .hb-table tbody td { padding: 0.55rem 0.5rem; }
+
+    /* Boutons dans tableau — empilés */
+    .hb-table td .hb-btn { padding: 0.28rem 0.5rem; font-size: 0.65rem; }
+
+    /* Formulaires */
+    .hb-form label { font-size: 0.72rem; }
+    .hb-form input[type="text"],
+    .hb-form input[type="email"],
+    .hb-form input[type="date"],
+    .hb-form input[type="time"],
+    .hb-form input[type="number"],
+    .hb-form select,
+    .hb-form textarea { font-size: 1rem; padding: 0.6rem 0.8rem; }
+    .hb-form-actions { flex-direction: column; }
+    .hb-form-actions .hb-btn { width: 100%; text-align: center; }
+
+    /* Toasts */
+    #hb-toast-container {
+        left: 0.8rem;
+        right: 0.8rem;
+        top: 70px;
+    }
+    .hb-toast {
+        min-width: unset;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Footer */
+    .hb-footer { font-size: 0.78rem; letter-spacing: 2px; padding: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+    .hb-banner { height: 170px; }
+    .hb-banner-overlay h1 { font-size: 1.7rem; letter-spacing: 3px; }
+    .hb-banner-overlay p { display: none; }
+    .hb-banner-line { display: none; }
+    .hb-page-title h2 { font-size: 1.2rem; }
 }
