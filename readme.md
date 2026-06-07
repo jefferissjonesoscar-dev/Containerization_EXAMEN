@@ -2,7 +2,6 @@
 
 **Étudiant :** GUERID Rayan — DEVA 1A
 **Module :** 164 — EPSIC
-**GitHub :** https://github.com/Ryserx5/Rayan--164-DEVA1A
 
 ---
 
@@ -24,7 +23,7 @@ d'un salon de coiffure via une interface élégante.
 ## Installation
 
 ### 1. Télécharger le projet
-Cloner le repo GitHub ou télécharger le ZIP et extraire.
+Télécharger le ZIP depuis GitHub et extraire le dossier.
 
 ### 2. Importer la base de données
 Ouvrir MySQL et exécuter le fichier SQL situé dans : database/GUERID_RAYAN_DEVA1A_HAIRBOOK_164_2024.SQL
