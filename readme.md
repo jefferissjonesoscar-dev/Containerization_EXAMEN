@@ -1,7 +1,6 @@
 # HairBook — Gestion de rendez-vous pour salon de coiffure
 
-**Étudiant :** GUERID Rayan — DEVA 1A
-**Module :** 164 — EPSIC
+**Étudiant :** guerid Rayan — DEVA 1A
 
 ---
 
@@ -26,8 +25,8 @@ d'un salon de coiffure via une interface élégante.
 Télécharger le ZIP depuis GitHub et extraire le dossier.
 
 ### 2. Importer la base de données
-Ouvrir MySQL et exécuter le fichier SQL situé dans : database/GUERID_RAYAN_DEVA1A_HAIRBOOK_164_2024.SQL
-(nécessaire uniquement si la base de données n'existe pas encore sur votre MySQL)
+Ouvrir MySQL et exécuter le fichier SQL situé dans :
+database/GUERID_RAYAN_DEVA1A_HAIRBOOK_164_2024.SQL
 
 ### 3. Installer les dépendances
 pip install -r requirements.txt
