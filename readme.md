@@ -1,6 +1,6 @@
 # HairBook — Gestion de rendez-vous pour salon de coiffure
 
-**Étudiant :** guerid Rayan — DEVA 1A
+**Étudiant :** Guerid Rayan — DEVA 1A
 
 ---
 
