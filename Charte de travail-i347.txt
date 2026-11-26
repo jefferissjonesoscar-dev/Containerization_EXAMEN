@@ -1,0 +1,29 @@
+Charte de travail en groupe 
+
+Règles / façon de fonctionner:
+
+Se partager le travail équitablement
+
+Discuter régulièrement et avant de prendre des décisions
+
+Respecter l'avis des autres
+
+Être tous présents lors des regroupements, ou prévenir à l'avance si on est absent et rattraper le travail à faire
+
+Fixer des deadlines
+
+Minimum 1 rdv/appel par semaine (ou plus)
+
+Répondre aux messages et aux questions posées
+
+Se partager tous les documents
+
+Mettre tous les fichiers sur un Git / Faire régulièrement des commits / Faire un suivi des tâches
+
+Deal breakers :
+
+Si une des personnes du groupe ne fait rien
+
+Si une personne du groupe ne respecte pas la charte de travail
+
+Si une personne ne respecte pas les deadlines
